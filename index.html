@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Coran Prototype - Juz' Amma</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #111;
+      color: #fff;
+    }
+    .section {
+      height: 100vh;
+      width: 100%;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.6);
+    }
+    .content {
+      z-index: 1;
+      max-width: 80%;
+    }
+    h1, h2 {
+      margin: 10px 0;
+    }
+    p {
+      font-size: 1.2rem;
+      margin: 10px 0;
+    }
+    button {
+      margin: 8px;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 12px;
+      background-color: #00c7c7;
+      color: #000;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #00aaaa;
+    }
+    #hassanat-counter {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: #00c7c7;
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: bold;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+
+<div id="hassanat-counter">Hassanates : 0</div>
+
+<!-- Bloc titre Sourate Al-Asr -->
+<div class="section" data-lettres="0">
+  <video src="videos/titre_alasr.mp4" autoplay muted loop></video>
+  <div class="content">
+    <h1>Sourate Al-Asr</h1>
+    <p>Le serment du Temps</p>
+  </div>
+</div>
+
+<!-- Lecture Sourate Al-Asr -->
+<div class="section" data-lettres="12">
+  <video src="videos/alasr_lecture.mp4" autoplay muted loop></video>
+  <div class="content">
+    <h1>وَالْعَصْرِ</h1>
+    <p>Par le Temps</p>
+    <audio src="audios/alasr_audio.mp3" autoplay loop></audio>
+  </div>
+</div>
+
+<!-- Tafsir Sourate Al-Asr -->
+<div class="section" data-lettres="0">
+  <video src="videos/alasr_tafsir.mp4" autoplay muted loop></video>
+  <div class="content">
+    <h2>Tafsir</h2>
+    <p>Allah jure par l’importance du temps, chaque instant est une opportunité précieuse.</p>
+  </div>
+</div>
+
+<!-- Mini-jeu Sourate Al-Asr -->
+<div class="section" data-lettres="0">
+  <video src="videos/alasr_quiz.mp4" autoplay muted loop></video>
+  <div class="content">
+    <h2>Complète :</h2>
+    <p>Par le Temps, l’homme est en…</p>
+    <button onclick="correctAnswer()">Perdition ✅</button>
+    <button onclick="wrongAnswer()">Réussite</button>
+    <button onclick="wrongAnswer()">Gloire</button>
+  </div>
+</div>
+
+<!-- Résonance Sourate Al-Asr -->
+<div class="section" data-lettres="0">
+  <video src="videos/alasr_resonance.mp4" autoplay muted loop></video>
+  <div class="content">
+    <h2>Résonance</h2>
+    <p>Quelles actions dois-tu préserver chaque jour pour ne pas être en perte ?</p>
+  </div>
+</div>
+
+<!-- Bloc titre Sourate Al-Falaq -->
+<div class="section" data-lettres="0">
+  <video src="videos/titre_alfalaq.mp4" autoplay muted loop></video>
+  <div class="content">
+    <h1>Sourate Al-Falaq</h1>
+    <p>La protection divine</p>
+  </div>
+</div>
+
+<!-- Lecture Sourate Al-Falaq -->
+<div class="section" data-lettres="20">
+  <video src="videos/alfalaq_lecture.mp4" autoplay muted loop></video>
+  <div class="content">
+    <h1>قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ</h1>
+    <p>Dis : Je cherche protection auprès du Seigneur de l’aube naissante</p>
+    <audio src="audios/alfalaq_audio.mp3" autoplay loop></audio>
+  </div>
+</div>
+
+<!-- Tafsir Sourate Al-Falaq -->
+<div class="section" data-lettres="0">
+  <video src="videos/alfalaq_tafsir.mp4" autoplay muted loop></video>
+  <div class="content">
+    <h2>Tafsir</h2>
+    <p>Demander la protection d’Allah contre tous les maux invisibles et visibles.</p>
+  </div>
+</div>
+
+<!-- Mini-jeu Sourate Al-Falaq -->
+<div class="section" data-lettres="0">
+  <video src="videos/alfalaq_quiz.mp4" autoplay muted loop></video>
+  <div class="content">
+    <h2>Complète :</h2>
+    <p>Je cherche refuge auprès du…</p>
+    <button onclick="correctAnswer()">Seigneur ✅</button>
+    <button onclick="wrongAnswer()">Créateur</button>
+    <button onclick="wrongAnswer()">Guide</button>
+  </div>
+</div>
+
+<!-- Résonance Sourate Al-Falaq -->
+<div class="section" data-lettres="0">
+  <video src="videos/alfalaq_resonance.mp4" autoplay muted loop></video>
+  <div class="content">
+    <h2>Résonance</h2>
+    <p>Quand ressens-tu le besoin de demander la protection d’Allah ?</p>
+  </div>
+</div>
+
+<script>
+let hassanat = 0;
+function updateCounter() {
+  document.getElementById('hassanat-counter').innerText = "Hassanates : " + hassanat;
+}
+
+function correctAnswer() {
+  hassanat += 50;
+  updateCounter();
+}
+
+function wrongAnswer() {
+  alert('Essaie encore !');
+}
+
+document.addEventListener('scroll', () => {
+  document.querySelectorAll('.section').forEach(section => {
+    let rect = section.getBoundingClientRect();
+    if (rect.top >= 0 && rect.top < window.innerHeight / 2) {
+      let lettres = parseInt(section.dataset.lettres);
+      if (lettres > 0 && !section.classList.contains('counted')) {
+        hassanat += lettres * 10;
+        section.classList.add('counted');
+        updateCounter();
+      }
+    }
+  });
+});
+</script>
+
+</body>
+</html>
